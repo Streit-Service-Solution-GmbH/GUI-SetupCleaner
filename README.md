@@ -4,6 +4,7 @@
 **Skriptbeschreibung**
 
 Bevor Sie loslegen, müssen Sie Visual Studio Code installiert haben und dann den Ordner `GUI-SetupCleaner` mit Visual Studio Code öffnen.
+
 Das vorliegende Programm ist ein Node.js-basiertes Skript, das dazu dient, Dateien und Ordner in einem bestimmten Verzeichnis zu überprüfen und solche zu löschen, die älter als eine bestimmte Zeit sind. Das Programm wurde entwickelt, um Ordner und Dateien zu bereinigen, die möglicherweise nicht mehr benötigt werden.
 
 **Skriptaufbau**
