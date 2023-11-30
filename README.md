@@ -5,7 +5,7 @@
 
 Bevor Sie loslegen, müssen Sie Visual Studio Code installiert haben und dann den Ordner `GUI-SetupCleaner` mit Visual Studio Code öffnen.
 
-Das vorliegende Programm ist ein Node.js-basiertes Skript, das dazu dient, Dateien und Ordner in einem bestimmten Verzeichnis zu überprüfen und solche zu löschen, die älter als eine bestimmte Zeit sind. Das Programm wurde entwickelt, um Ordner und Dateien zu bereinigen, die möglicherweise nicht mehr benötigt werden.
+Das vorliegende Skript ist ein Node.js-basierendes Skript, das dazu dient, Dateien und Ordner in einem bestimmten Verzeichnis zu überprüfen und solche zu löschen, die älter als 30 Tage sind. Das Programm wurde entwickelt, um Ordner und Dateien zu bereinigen, die möglicherweise nicht mehr benötigt werden.
 
 **Skriptaufbau**
 
@@ -18,15 +18,16 @@ Im Ordner `GUI-SetupCleanerV2` gibt es einmal den Unterordner  `public` in dem d
 
 1. **Installation von Abhängigkeiten:**
 
-   Bevor Sie das Programm ausführen, stellen Sie sicher, dass Node.js auf Ihrem System installiert ist. Installieren Sie dann die erforderlichen Pakete, indem Sie in der Befehlszeile den folgenden Befehl ausführen:
+   Bevor Sie das Skript ausführen, stellen Sie sicher, dass Node.js auf Ihrem System installiert ist. Installieren Sie dann die erforderlichen Pakete,
+   indem Sie in der Befehlszeile den folgenden Befehl ausführen:
 
    ```
    npm install node fs path readline express body-parser rimraf 
    ```
 
-2. **Skriptausführung:**
+3. **Skriptausführung:**
 
-   Starten Sie das Programm, indem Sie in der Befehlszeile den folgenden Befehl im Verzeichnis des Programms ausführen:
+   Starten Sie das Skript, indem Sie in der Befehlszeile den folgenden Befehl im Verzeichnis des Programms ausführen:
 
    ```
    node app.js
@@ -34,7 +35,7 @@ Im Ordner `GUI-SetupCleanerV2` gibt es einmal den Unterordner  `public` in dem d
 
    Stellen Sie sicher, dass Sie den richtigen Dateinamen des Programms verwenden.
 
-3. **Konfiguration:**
+4. **Konfiguration:**
 
    - Sie können den Zielordner für die Bereinigung im Skript angeben. 
      Der Standardport ist auf `http://localhost:3030` eingestellt, kann aber bei Bedarf geändert werden.
