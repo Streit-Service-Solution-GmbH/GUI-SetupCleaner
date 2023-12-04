@@ -44,7 +44,7 @@ function checkDateiUndOrdner(zielOrdner) {
         fs.existsSync(path.join(zielOrdner, `${datei}.sf_export_finished.txt`))
       ) {
         const timeDifference = currentDate.getTime() - fileDate.getTime();
-        const oneDayInMillis =   1 * 60 * 60 * 1000; //30 Tage in Millisekunden
+        const oneDayInMillis =   24 * 60 * 60 * 1000; //30 Tage in Millisekunden
 
         if (timeDifference > oneDayInMillis) {
           console.log(`Lösche Ordner (älter als 1 Tag): ${datei}`);
@@ -56,7 +56,7 @@ function checkDateiUndOrdner(zielOrdner) {
         /^[0-9]+\.sf_export_finished\.txt$/g.test(datei)
       ) {
         const timeDifference = currentDate.getTime() - fileDate.getTime();
-        const oneDayInMillis =   1 * 60 * 60 * 1000; // 30 Tage in Millisekunden
+        const oneDayInMillis =   24 * 60 * 60 * 1000; // 30 Tage in Millisekunden
 
         if (timeDifference > oneDayInMillis) {
           console.log(`Lösche Datei (älter als 1 Tag): ${datei}`);
