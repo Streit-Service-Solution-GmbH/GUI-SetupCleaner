@@ -30,37 +30,42 @@ function checkDateiUndOrdner(zielOrdner) {
   try {
     const files = fs.readdirSync(zielOrdner);
 
-    files.forEach(datei => {
-      const fullPath = path.join(zielOrdner, datei);
+    files.forEach(element => {
+      const fullPath = path.join(zielOrdner, element);
       const stats = fs.statSync(fullPath);
 
       const currentDate = new Date();
       const fileDate = new Date(stats.mtime);
 
-      // Überprüfen, ob das Element eine Textdatei mit der Endung ".sf_export_finished" und der dazugehörige Ordner ist
       if (
         stats.isDirectory() &&
-        /^[0-9]+$/g.test(datei) &&
-        fs.existsSync(path.join(zielOrdner, `${datei}.sf_export_finished.txt`))
+        /^[0-9]+$/g.test(element) &&
+        fs.existsSync(path.join(zielOrdner, `${element}.sf_export_finished.txt`))
       ) {
         const timeDifference = currentDate.getTime() - fileDate.getTime();
-        const oneDayInMillis =   24 * 60 * 60 * 1000; //30 Tage in Millisekunden
+        const oneDayInMillis = 24 * 60 * 60 * 1000; // 30 Tage in Millisekunden
 
         if (timeDifference > oneDayInMillis) {
-          console.log(`Lösche Ordner (älter als 1 Tag): ${datei}`);
+          console.log(`Lösche Ordner (älter als 1 Tag): ${element}`);
           deleteRecursive(fullPath);
           console.log(`Ordner gelöscht.`);
         }
       } else if (
         stats.isFile() &&
-        /^[0-9]+\.sf_export_finished\.txt$/g.test(datei)
+        /^[0-9]+\.sf_export_finished\.txt$/g.test(element)
       ) {
         const timeDifference = currentDate.getTime() - fileDate.getTime();
-        const oneDayInMillis =   24 * 60 * 60 * 1000; // 30 Tage in Millisekunden
+        const oneDayInMillis = 24 * 60 * 60 * 1000; // 30 Tage in Millisekunden
 
         if (timeDifference > oneDayInMillis) {
-          console.log(`Lösche Datei (älter als 1 Tag): ${datei}`);
+          console.log(`Lösche Datei (älter als 1 Tag): ${element}`);
           fs.unlinkSync(fullPath);
+
+          // Finde den dazugehörigen Ordner und lösche ihn
+          const folderPath = path.join(zielOrdner, element.replace(/\.sf_export_finished\.txt$/, ''));
+          console.log(`Lösche zugehörigen Ordner: ${folderPath}`);
+          deleteRecursive(folderPath);
+
           console.log(`Datei und zugehöriger Ordner gelöscht.`);
         }
       }
